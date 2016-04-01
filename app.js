@@ -6,8 +6,8 @@ var portNumber = 8080;
 
 var spawnTail;
 app.get('/cattail', function(req, res) {
-
-  spawnTail = spawn('tail', ['-f', 'PATH']);
+  var path = req.query.path;
+  spawnTail = spawn('tail', ['-f', path]);
   res.header('Content-Type','text/html;charset=utf-8');
 
   spawnTail.stdout.on('data', function(data) {
