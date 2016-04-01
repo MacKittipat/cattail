@@ -11,7 +11,8 @@ app.get('/cattail', function(req, res) {
   res.header('Content-Type','text/html;charset=utf-8');
 
   spawnTail.stdout.on('data', function(data) {
-    res.write(data.toString().split("\n").join("<br />"), 'utf-8');
+    res.write(data.toString().split("\n")
+      .join("<br /><script>window.scrollTo(0,document.body.scrollHeight);</script>"),'utf-8');
   });
 
   spawnTail.on('exit', function(code) {
