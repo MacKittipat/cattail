@@ -16,7 +16,7 @@ var ansiToHtml = new AnsiToHtml(ansiToHtmlOpt);
 var spawnTail;
 app.get('/cattail', function(req, res) {
   var path = req.query.path;
-  spawnTail = spawn('tail', ['-f', path]);
+  spawnTail = spawn('tail', ['-f', '-n100', path]);
   res.header('Content-Type','text/html;charset=utf-8');
 
   spawnTail.stdout.on('data', function(data) {
